@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank - User Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-box">M</div>
+            <div>
+                <h2>MyBank</h2>
+                <span>Online Banking</span>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+
+            <button onclick="showUserSection('dashboard')" class="menu-item active">
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button onclick="showUserSection('deposit')" class="menu-item">
+                <span>＋</span>
+                Deposit
+            </button>
+
+            <button onclick="showUserSection('withdraw')" class="menu-item">
+                <span>−</span>
+                Withdraw
+            </button>
+
+            <button onclick="showUserSection('transfer')" class="menu-item">
+                <span>↗</span>
+                Transfer
+            </button>
+
+            <button onclick="showUserSection('transactions')" class="menu-item">
+                <span>▤</span>
+                Transactions
+            </button>
+
+            <button onclick="showUserSection('profile')" class="menu-item">
+                <span>♙</span>
+                Profile
+            </button>
+
+        </div>
+
+        <button onclick="logout()" class="logout-button">
+            <span>↪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <p class="small-heading">USER DASHBOARD</p>
+                <h1>Welcome back, <span id="welcomeName">User</span>!</h1>
+                <p class="header-subtitle">
+                    Manage your account and transactions easily.
+                </p>
+            </div>
+
+            <div class="user-avatar">
+                <span>U</span>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="user-section dashboard-section">
+
+            <div class="balance-card">
+
+                <div>
+                    <p>Available Balance</p>
+                    <h2>₹<span id="balance">0</span></h2>
+                    <span class="balance-status">● Active Account</span>
+                </div>
+
+                <div class="balance-icon">
+                    ₹
+                </div>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="info-icon">▣</div>
+                    <div>
+                        <p>Account Number</p>
+                        <h3 id="accountNumber">---</h3>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">✓</div>
+                    <div>
+                        <p>Account Status</p>
+                        <h3>Active</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="quick-title">
+                <h2>Quick Actions</h2>
+                <p>Choose an action to manage your money.</p>
+            </div>
+
+            <div class="quick-actions">
+
+                <button onclick="showUserSection('deposit')" class="quick-card">
+                    <div class="quick-icon deposit-icon">＋</div>
+                    <h3>Deposit Money</h3>
+                    <p>Add money to your account</p>
+                </button>
+
+                <button onclick="showUserSection('withdraw')" class="quick-card">
+                    <div class="quick-icon withdraw-icon">−</div>
+                    <h3>Withdraw Money</h3>
+                    <p>Withdraw from your account</p>
+                </button>
+
+                <button onclick="showUserSection('transfer')" class="quick-card">
+                    <div class="quick-icon transfer-icon">↗</div>
+                    <h3>Transfer Money</h3>
+                    <p>Send money to another user</p>
+                </button>
+
+                <button onclick="showUserSection('transactions')" class="quick-card">
+                    <div class="quick-icon transaction-icon">▤</div>
+                    <h3>Transactions</h3>
+                    <p>View your transaction history</p>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEPOSIT -->
+        <section id="deposit" class="user-section action-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Deposit Money</h2>
+                <p>Add money to your MyBank account.</p>
+            </div>
+
+            <div class="form-card">
+
+                <div class="form-icon">＋</div>
+
+                <form onsubmit="depositMoney(event)">
+
+                    <label>Amount</label>
+
+                    <div class="amount-input">
+                        <span>₹</span>
+                        <input
+                            type="number"
+                            id="depositAmount"
+                            placeholder="Enter amount"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="primary-action">
+                        Deposit Money
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- WITHDRAW -->
+        <section id="withdraw" class="user-section action-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Withdraw Money</h2>
+                <p>Withdraw money from your MyBank account.</p>
+            </div>
+
+            <div class="form-card">
+
+                <div class="form-icon withdraw-form-icon">−</div>
+
+                <form onsubmit="withdrawMoney(event)">
+
+                    <label>Amount</label>
+
+                    <div class="amount-input">
+                        <span>₹</span>
+                        <input
+                            type="number"
+                            id="withdrawAmount"
+                            placeholder="Enter amount"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="primary-action">
+                        Withdraw Money
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSFER -->
+        <section id="transfer" class="user-section action-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Transfer Money</h2>
+                <p>Send money securely to another MyBank account.</p>
+            </div>
+
+            <div class="form-card">
+
+                <div class="form-icon transfer-form-icon">↗</div>
+
+                <form onsubmit="transferMoney(event)">
+
+                    <label>Receiver Account Number</label>
+
+                    <input
+                        type="text"
+                        id="receiverAccount"
+                        class="normal-input"
+                        placeholder="Example: MYB12345678"
+                        required
+                    >
+
+                    <label>Amount</label>
+
+                    <div class="amount-input">
+                        <span>₹</span>
+                        <input
+                            type="number"
+                            id="transferAmount"
+                            placeholder="Enter amount"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="primary-action">
+                        Transfer Money
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSACTIONS -->
+        <section id="transactions" class="user-section action-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Transaction History</h2>
+                <p>View all your recent transactions.</p>
+            </div>
+
+            <div class="table-card">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+        <section id="profile" class="user-section action-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>My Profile</h2>
+                <p>Your registered account information.</p>
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">U</div>
+
+                <div class="profile-details">
+
+                    <div>
+                        <span>Full Name</span>
+                        <strong id="profileName">---</strong>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong id="profileEmail">---</strong>
+                    </div>
+
+                    <div>
+                        <span>Phone</span>
+                        <strong id="profilePhone">---</strong>
+                    </div>
+
+                    <div>
+                        <span>Username</span>
+                        <strong id="profileUsername">---</strong>
+                    </div>
+
+                    <div>
+                        <span>Account Number</span>
+                        <strong id="profileAccount">---</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

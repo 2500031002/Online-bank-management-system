@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar admin-sidebar">
+
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-box">M</div>
+            <div>
+                <h2>MyBank</h2>
+                <span>Administration</span>
+            </div>
+        </div>
+
+        <div class="admin-label">ADMIN PANEL</div>
+
+        <div class="sidebar-menu">
+
+            <button onclick="showAdminSection('adminDashboard')" class="menu-item active">
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button onclick="showAdminSection('users')" class="menu-item">
+                <span>♙</span>
+                Users
+            </button>
+
+            <button onclick="showAdminSection('accounts')" class="menu-item">
+                <span>▣</span>
+                Accounts
+            </button>
+
+            <button onclick="showAdminSection('adminTransactions')" class="menu-item">
+                <span>▤</span>
+                Transactions
+            </button>
+
+        </div>
+
+        <button onclick="logout()" class="logout-button">
+            <span>↪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <p class="small-heading">ADMINISTRATION</p>
+                <h1>Admin Dashboard</h1>
+                <p class="header-subtitle">
+                    Manage users, accounts and transactions.
+                </p>
+            </div>
+
+            <div class="admin-avatar">
+                🛡
+            </div>
+
+        </header>
+
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="adminDashboard" class="admin-section">
+
+            <div class="admin-welcome">
+
+                <div>
+                    <p>MYBANK MANAGEMENT SYSTEM</p>
+                    <h2>System Overview</h2>
+                    <span>
+                        Monitor the banking system from one place.
+                    </span>
+                </div>
+
+                <div class="admin-shield">
+                    🛡️
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">♙</div>
+                    <div>
+                        <p>Total Users</p>
+                        <h2 id="totalUsers">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">▣</div>
+                    <div>
+                        <p>Total Accounts</p>
+                        <h2 id="totalAccounts">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">▤</div>
+                    <div>
+                        <p>Transactions</p>
+                        <h2 id="totalTransactions">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="admin-action-title">
+                <h2>Management</h2>
+                <p>Select a section to manage the banking system.</p>
+            </div>
+
+
+            <div class="admin-management-grid">
+
+                <button onclick="showAdminSection('users')" class="management-card">
+                    <div class="management-icon">♙</div>
+                    <h3>Manage Users</h3>
+                    <p>View registered users and their details.</p>
+                </button>
+
+                <button onclick="showAdminSection('accounts')" class="management-card">
+                    <div class="management-icon">▣</div>
+                    <h3>Manage Accounts</h3>
+                    <p>View account numbers and balances.</p>
+                </button>
+
+                <button onclick="showAdminSection('adminTransactions')" class="management-card">
+                    <div class="management-icon">▤</div>
+                    <h3>View Transactions</h3>
+                    <p>Monitor all user transactions.</p>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- USERS -->
+        <section id="users" class="admin-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Registered Users</h2>
+                <p>View all users registered in MyBank.</p>
+            </div>
+
+            <div class="table-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Username</th>
+                            <th>Account Number</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="usersBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCOUNTS -->
+        <section id="accounts" class="admin-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>Bank Accounts</h2>
+                <p>View all customer accounts and balances.</p>
+            </div>
+
+            <div class="table-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Username</th>
+                            <th>Balance</th>
+                            <th>Account Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="accountsBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRANSACTIONS -->
+        <section id="adminTransactions" class="admin-section" style="display:none;">
+
+            <div class="section-heading">
+                <h2>All Transactions</h2>
+                <p>Monitor transactions performed by users.</p>
+            </div>
+
+            <div class="table-card">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Transaction</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="adminTransactionBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

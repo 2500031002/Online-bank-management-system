@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank - Create Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="register-page">
+
+<div class="register-container">
+
+    <div class="register-left">
+
+        <div class="register-logo">
+            <div class="register-logo-box">M</div>
+            <div>
+                <h1>MyBank</h1>
+                <p>Online Banking</p>
+            </div>
+        </div>
+
+        <div class="register-left-content">
+            <h2>Banking made<br><span>simple & secure.</span></h2>
+
+            <p>
+                Create your MyBank account and enjoy convenient
+                online banking from anywhere, anytime.
+            </p>
+
+            <div class="register-benefits">
+                <div>
+                    <span>✓</span>
+                    <p>Secure online banking</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Easy money management</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Fast and simple transactions</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="register-copyright">
+            © 2026 MyBank. All rights reserved.
+        </p>
+
+    </div>
+
+
+    <div class="register-right">
+
+        <div class="register-card">
+
+            <!-- USER REGISTRATION -->
+            <div id="userRegister">
+
+                <div class="register-heading">
+                    <span class="register-icon">👤</span>
+                    <div>
+                        <h2>Create User Account</h2>
+                        <p>Enter your details to get started</p>
+                    </div>
+                </div>
+
+                <form onsubmit="registerUser(event)">
+
+                    <div class="register-input-row">
+
+                        <div class="register-input-group">
+                            <label>Full Name</label>
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="register-input-group">
+                            <label>Email Address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="register-input-row">
+
+                        <div class="register-input-group">
+                            <label>Phone Number</label>
+                            <input
+                                type="text"
+                                id="phone"
+                                placeholder="Enter phone number"
+                                required
+                            >
+                        </div>
+
+                        <div class="register-input-group">
+                            <label>Username</label>
+                            <input
+                                type="text"
+                                id="registerUsername"
+                                placeholder="Choose a username"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="register-input-row">
+
+                        <div class="register-input-group">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Create a password"
+                                required
+                            >
+                        </div>
+
+                        <div class="register-input-group">
+                            <label>Confirm Password</label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="create-account-button">
+                        Create User Account
+                    </button>
+
+                </form>
+
+                <p class="already-account">
+                    Already have an account?
+                    <a href="index.html">Sign in</a>
+                </p>
+
+            </div>
+
+
+            <!-- ADMIN REGISTRATION -->
+            <div id="adminRegister" style="display:none;">
+
+                <div class="register-heading">
+                    <span class="register-icon">🛡️</span>
+                    <div>
+                        <h2>Create Admin Account</h2>
+                        <p>Register your administrator account</p>
+                    </div>
+                </div>
+
+                <div class="admin-register-notice">
+                    <strong>Administrator Registration</strong>
+                    <p>
+                        Admin accounts have access to system management
+                        features and user information.
+                    </p>
+                </div>
+
+                <form onsubmit="registerAdmin(event)">
+
+                    <div class="register-input-group full-width">
+                        <label>Full Name</label>
+                        <input
+                            type="text"
+                            id="adminFullName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="register-input-group full-width">
+                        <label>Email Address</label>
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+                    <div class="register-input-group full-width">
+                        <label>Admin Username</label>
+                        <input
+                            type="text"
+                            id="registerAdminUsername"
+                            placeholder="Choose an admin username"
+                            required
+                        >
+                    </div>
+
+                    <div class="register-input-row">
+
+                        <div class="register-input-group">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                id="registerAdminPassword"
+                                placeholder="Create password"
+                                required
+                            >
+                        </div>
+
+                        <div class="register-input-group">
+                            <label>Confirm Password</label>
+                            <input
+                                type="password"
+                                id="confirmAdminPassword"
+                                placeholder="Confirm password"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="create-account-button admin-create-button">
+                        Create Admin Account
+                    </button>
+
+                </form>
+
+                <p class="already-account">
+                    Already have an admin account?
+                    <a href="index.html">Admin Sign in</a>
+                </p>
+
+            </div>
+
+            <p id="registerMessage" class="register-message"></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
